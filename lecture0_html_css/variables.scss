@@ -1,0 +1,20 @@
+// Need to install sass generator for this to work (installed sass-lang on linux using Homebrew)
+// In the command-line, execute "sass variable.scss variable.css" in the linux terminal to tell sass engine to read "variable.scss" and generate a css file called "variable.css"
+
+$color: red;
+
+div {
+    p {
+        color: blue;
+    }    
+}
+
+ul {
+    font-size: 14px;
+    color: $color;
+}
+
+ol {
+    font-size: 18px;
+    color: $color;
+}
