@@ -1,24 +1,65 @@
 .main {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 
-#nav-links {
+#nav-container {
   display: flex;
   justify-content: flex-end;
   width: 100%;
 }
-#nav-links a {
-  margin: 0.2em;
+#nav-container .nav-item {
+  margin: 0.5em;
+  text-decoration: none;
+  color: black;
+  font-family: arial, sans-serif;
+  font-size: 0.8em;
+}
+#nav-container .nav-item:hover {
+  text-decoration: underline;
 }
 
-#search {
-  display: flex;
-  justify-content: center;
+#search-form {
   width: 100%;
 }
-#search form #search-bar {
-  width: 100%;
+#search-form div {
+  display: flex;
+  justify-content: center;
+}
+#search-form div #search-bar {
+  height: 30px;
+  background: #fff;
+  border: 1px solid #dfe1e5;
+  box-shadow: none;
+  border-radius: 24px;
+  margin: 0 auto;
+  padding-left: 1em;
+}
+@media (min-width: 600px) {
+  #search-form div #search-bar {
+    width: 45%;
+  }
+}
+@media (max-width: 599px) {
+  #search-form div #search-bar {
+    width: 65%;
+  }
+}
+#search-form div .search-btn {
+  background-color: #f8f9fa;
+  border: 1px solid #f8f9fa;
+  border-radius: 4px;
+  color: #3c4043;
+  font-family: Roboto, arial, sans-serif;
+  font-size: 14px;
+  margin: 11px 4px;
+  padding: 0 16px;
+  line-height: 27px;
+  height: 36px;
+  min-width: 54px;
+  text-align: center;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=project0.css.map */
