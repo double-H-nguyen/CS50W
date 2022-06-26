@@ -1,0 +1,26 @@
+.main {
+    display: flex; 
+    flex-wrap: wrap;
+}
+
+#nav-links {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    a {
+        margin: 0.2em;
+    }
+}
+
+#search {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    form {
+        #search-bar{
+            width: 100%;
+        }
+    }
+}
