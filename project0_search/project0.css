@@ -20,8 +20,21 @@
   text-decoration: underline;
 }
 
+#logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 200px;
+}
+#logo-container img {
+  height: 92px;
+  aspect-ratio: auto 272/92;
+}
+
 #search-form {
   width: 100%;
+  margin: 1.5em;
 }
 #search-form div {
   display: flex;
