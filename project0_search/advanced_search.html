@@ -1,9 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+		<meta name="viewport" content="width=device-width", initial-scale="1.0">
         <title>Advanced Search</title>
+        <link rel="stylesheet" href="project0.css">
     </head>
     <body>
-        <h1>Advanced Search</h1>
+        <div class="main">
+            <div id="nav-container">
+                <a href="index.html" class="nav-item">Back to Google Search</a>
+            </div>
+            
+            <div id="adv-srch-header">
+                <span>Advanced Search</span>
+            </div>
+
+            <div class="divider"></div>
+
+            <div id="adv-srch-sub-header">
+                <span>Find pages with...</span>
+            </div>
+
+            <form id="adv-search-form" action="https://www.google.com/search">
+                <div>
+                    <label for="all-these-words">all these words: </label>
+                    <input type="text" name="as_q" id="all-these-words">
+                </div>
+                <div>
+                    <label for="exact-word-or-phrase">this exact word or phrase: </label>
+                    <input type="text" name="as_epq" id="exact-word-or-phrase">
+                </div>
+                <div>
+                    <label for="any-of-these-words">any of these words: </label>
+                    <input type="text" name="as_oq" id="any-of-these-words">
+                </div>
+                <div>
+                    <label for="none-of-these-words">none of these words: </label>
+                    <input type="text" name="as_eq" id="none-of-these-words">
+                </div>
+               <div>
+                    <input type="submit" value="Advanced Search" class="adv-search-btn">
+                </div>
+            </form>
+        </div> 
     </body>
 </html>
