@@ -1,9 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+		<meta name="viewport" content="width=device-width", initial-scale="1.0">
         <title>Image Search</title>
+        <link rel="stylesheet" href="project0.css">
     </head>
     <body>
-        <h1>Image Search</h1>
+        <div class="main">
+            <div id="nav-container">
+                <a href="index.html" class="nav-item">Back to Google Search</a>
+            </div>
+
+            <div id="logo-container">
+                <img alt="Google" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png">
+            </div>
+
+            <form id="search-form" action="https://www.google.com/search">
+                <div>
+                    <input type="text" name="q" id="search-bar">
+                    <input name="tbm" value="isch" type="hidden">
+                </div>
+
+                <div>
+                    <input type="submit" value="Image Search" class="search-btn">
+                </div>
+            </form>
+        </div> 
     </body>
 </html>
