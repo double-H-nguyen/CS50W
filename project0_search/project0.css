@@ -97,13 +97,44 @@
 }
 
 #adv-search-form {
-  width: 100%;
   color: #333;
-  margin: 25px 35px;
 }
-#adv-search-form div {
-  height: 42px;
-  min-width: 167px;
+@media (min-width: 600px) {
+  #adv-search-form {
+    width: 50%;
+    margin: 25px 35px;
+  }
+}
+@media (max-width: 599px) {
+  #adv-search-form {
+    width: 100%;
+  }
+}
+#adv-search-form .adv-srch-container {
+  display: flex;
+  height: 21px;
+}
+#adv-search-form .adv-srch-label {
+  flex-grow: 1;
+  width: 210px;
+}
+#adv-search-form .adv-srch-input {
+  flex-grow: 2;
+}
+#adv-search-form #adv-srch-container {
+  display: flex;
+  justify-content: flex-end;
+}
+#adv-search-form #adv-srch-container .adv-srch-btn {
+  margin-top: 1em;
+  height: 30px;
+  min-width: 120px;
+  background-color: #4d90fe;
+  color: white;
+  font-weight: bold;
+  box-shadow: none;
+  border-radius: 2px;
+  border: 1px solid #3079ed;
 }
 
 /*# sourceMappingURL=project0.css.map */
