@@ -8,3 +8,4 @@
 
 ## Unexpected things I have learned
 * How to install and use HomeBrew on Linux
+* Learn how to develop on MacOS (bought a MacBook Air)
