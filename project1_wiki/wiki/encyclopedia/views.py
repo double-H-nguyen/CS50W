@@ -2,7 +2,9 @@ from nis import match
 from queue import Empty
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.contrib import messages
 from . import util
+from . import forms
 
 
 def index(request):
@@ -47,3 +49,26 @@ def search(request):
                 })
         else: # if page is found, redirect to page
             return HttpResponseRedirect(f'/wiki/{search}')
+
+
+def create(request):
+    form = forms.create_page_form()
+    if request.method == "POST":
+        form = forms.create_page_form(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data["title"]
+            content = form.cleaned_data["content"]
+            # if page doesn't exist add to disk and redirect to page, else show error page
+            if util.get_entry(title) is None:
+                util.save_entry(title, content)
+                return HttpResponseRedirect(f'/wiki/{title}')
+            else:
+                # return original form values with error message
+                messages.error(request, f"\"{title.capitalize()}\" page already exist. Use a different title.")
+                return render(request, "encyclopedia/create.html", {
+                    "form": form   
+                })
+    else:
+        return render(request, "encyclopedia/create.html", {
+            "form": form   
+        })
