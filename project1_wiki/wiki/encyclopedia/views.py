@@ -1,5 +1,7 @@
+from nis import match
+from queue import Empty
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-
 from . import util
 
 
@@ -21,3 +23,27 @@ def wiki(request, title):
         "title": title.capitalize(),
         "entry": entry
     })
+
+
+def search(request):
+    if request.method == "POST":
+        search = request.POST['q']
+        entry = util.get_entry(search)
+        if entry is None:
+            # show list of available pages that contains the substring
+            matched_entries = []
+            entries = util.list_entries()
+            for entry in entries:
+                if search.lower() in entry.lower():
+                    matched_entries.append(entry)
+            if len(matched_entries) != 0:
+                return render(request, "encyclopedia/search_results.html", {
+                    "entries": matched_entries
+                })
+            else: # show no pages found
+                return render(request, "encyclopedia/error.html", {
+                    "error_title": "No Pages Found Based on Search",
+                    "error_message": f"Sorry, no pages were found that matched with \"{search}\"."
+                })
+        else: # if page is found, redirect to page
+            return HttpResponseRedirect(f'/wiki/{search}')
