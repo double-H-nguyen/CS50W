@@ -6,6 +6,7 @@ from django.contrib import messages
 from . import util
 from . import forms
 from random import randint
+from markdown2 import markdown
 
 
 def index(request):
@@ -24,7 +25,7 @@ def wiki(request, title):
     
     return render(request, "encyclopedia/wiki.html", {
         "title": title.capitalize(),
-        "entry": entry
+        "entry": markdown(entry)
     })
 
 
