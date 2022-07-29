@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.contrib import messages
 from . import util
 from . import forms
+from random import randint
 
 
 def index(request):
@@ -99,4 +100,16 @@ def edit(request, title):
             return render(request, "encyclopedia/error.html", {
                 "error_title": "Page does not exist",
                 "error_message": f"\"{title.capitalize()}\" page does not exist, so it cannot be edited."
+            })
+
+
+def random(request):
+    entries = util.list_entries()
+    if entries is not None: # entries exist
+        random_title = entries[randint(0, len(entries) - 1)]
+        return HttpResponseRedirect(f'wiki/{random_title}')
+    else: # no entries
+        return render(request, "encyclopedia/error.html", {
+                "error_title": "No entries",
+                "error_message": "There are no entries, so a random page cannot be selected."
             })
