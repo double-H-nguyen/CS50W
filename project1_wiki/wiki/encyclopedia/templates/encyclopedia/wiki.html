@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %}
+    <a href="{% url 'encyclopedia:edit' title %}">Edit Page</a>
     <div>
         {{ entry }}
     </div>

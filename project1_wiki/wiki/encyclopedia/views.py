@@ -52,7 +52,6 @@ def search(request):
 
 
 def create(request):
-    form = forms.create_page_form()
     if request.method == "POST":
         form = forms.create_page_form(request.POST)
         if form.is_valid():
@@ -69,6 +68,35 @@ def create(request):
                     "form": form   
                 })
     else:
+        form = forms.create_page_form()
         return render(request, "encyclopedia/create.html", {
             "form": form   
         })
+
+
+def edit(request, title):
+    if request.method == "POST":
+        form = forms.edit_page_form(request.POST)
+        if form.is_valid():
+            content = form.cleaned_data["content"]
+            util.save_entry(title, content)
+            return HttpResponseRedirect(f'/wiki/{title}')
+        else: # invalid form
+            messages.error(request, "Unable to save edit. Please verify your inputs.")
+            return render(request, "encyclopedia/edit.html", {
+                "title": title.capitalize(),
+                "form": form
+            })
+    else:
+        entry = util.get_entry(title)
+        if entry is not None: # page exist
+            form = forms.edit_page_form(initial={'content': entry})
+            return render(request, "encyclopedia/edit.html", {
+                "title": title.capitalize(),
+                "form": form
+            })
+        else: # page does not exist
+            return render(request, "encyclopedia/error.html", {
+                "error_title": "Page does not exist",
+                "error_message": f"\"{title.capitalize()}\" page does not exist, so it cannot be edited."
+            })

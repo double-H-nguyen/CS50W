@@ -7,3 +7,9 @@ class create_page_form(forms.Form):
                             widget=forms.TextInput(attrs={'class':'form-control'}))
     content = forms.CharField(label="Markdown Content", min_length=1, strip=True,
                             widget=forms.Textarea(attrs={'class':'form-control'}))
+
+
+# for edit.html
+class edit_page_form(forms.Form):
+    content = forms.CharField(label="Markdown Content", min_length=1, strip=True,
+                            widget=forms.Textarea(attrs={'class':'form-control'}))
